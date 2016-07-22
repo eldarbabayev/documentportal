@@ -1,0 +1,38 @@
+.log-in {
+  margin: 10px auto;
+  text-align: center;
+  max-width: 300px;
+  margin-top: 160px;
+  display: none;
+
+
+  & * {
+    display: block;
+  }
+
+  & a {
+    text-decoration: none;
+    color: @color-font;
+    margin-top: 20px;
+  }
+
+  .email-error {
+    z-index: -100;
+    visibility: hidden;
+    opacity: 0;
+    color: red;
+    transition: height .3s, opacity .3s .3s, visibility .3s .3s;
+    height: 0px;
+    margin: 0;
+  }
+
+  .password-error {
+    z-index: -100;
+    visibility: hidden;
+    opacity: 0;
+    color: red;
+    transition: height .3s, opacity .3s .3s, visibility .3s .3s;
+    height: 0px;
+    margin: 0;
+    }
+}

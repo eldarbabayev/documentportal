@@ -1,0 +1,9 @@
+<form fade-in class="log-in" ng-submit="$ctrl.logIn($ctrl.email, $ctrl.password)">
+  <h1>Log In</h1>
+  <input ng-model="$ctrl.email" type="email" id="email" name="user_email" placeholder="Email">
+  <p class="email-error"></p>
+  <input ng-model="$ctrl.password" type="password" id="password" name="user_password" placeholder="Password">
+  <p class="password-error"></p>
+  <input type="submit" value="Log In"/>
+  <a href="/signup">Not a member?</a>
+</form>
