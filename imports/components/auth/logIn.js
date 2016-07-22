@@ -89,14 +89,48 @@ class LogInCtrl {
 
       Meteor.loginWithPassword(email, password, function(error) {
       if (error) {
-        console.log("error while log in");
-      }
+        if (error.reason === "User not found") {
+          $(".email-error").css("visibility", "visible");
+          $(".email-error").css("opacity", "1");
+          $(".email-error").css("height", "30px");
+          $("#email").css("border-color", "red");
+          $("#email").css("margin-bottom", "0");
+          $(".email-error").text("this email is not found");
+          var elem = $("#email");
+          elem.on( "focus", function () {
+            elem.css("box-shadow", "0 0 0 1px red");
+            } );
 
-      // clear form
-      this.email = '';
-      this.password = '';
-      
-      this.state.go('documents');
+          elem.on( "focusout", function () {
+            elem.css("box-shadow", "0 0 0 0 red");
+            }  );
+        } else if (error.reason === "Incorrect password") {
+          $(".password-error").css("visibility", "visible");
+          $(".password-error").css("opacity", "1");
+          $(".password-error").css("height", "30px");
+          var elem = $("#password");
+          elem.on( "focus", function () {
+            elem.css("box-shadow", "0 0 0 1px red");
+            } );
+
+          elem.on( "focusout", function () {
+            elem.css("box-shadow", "0 0 0 0 red");
+            }  );
+          $("#password").css("border-color", "red");
+          $("#password").css("margin-bottom", "0");
+          $(".password-error").text("password is incorrect");
+
+        };
+
+      } else {
+
+        // clear form
+        this.email = '';
+        this.password = '';
+
+        this.state.go('documents');
+
+      }
 
       }.bind(this));
     }
