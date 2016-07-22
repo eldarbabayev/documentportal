@@ -95,7 +95,7 @@ class LogInCtrl {
       // clear form
       this.email = '';
       this.password = '';
-      console.log(this.state);
+      
       this.state.go('documents');
 
       }.bind(this));

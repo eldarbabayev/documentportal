@@ -97,6 +97,11 @@ class SignUpCtrl {
       }
     });
 
+    Meteor.loginWithPassword(email, password, function(error) {
+    if (error) {
+      console.log("error while log in");
+    }
+
     // clear form
     this.email = '';
     this.password = '';
@@ -104,10 +109,15 @@ class SignUpCtrl {
 
     this.state.go('documents');
 
+    }.bind(this));
+  }
+
+
+
     }
   }
 
-}
+
 
 export default angular.module('signUp', [
   angularMeteor
